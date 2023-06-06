@@ -23,3 +23,13 @@ mongoose.connect('mongodb+srv://app:app@cluster0.d7rchhc.mongodb.net/', {
   });
   
   const Item = mongoose.model('Item', itemSchema);
+  
+  app.get('/api/items', async (req, res) => {
+    try {
+      const items = await Item.find();
+      res.json(items);
+    } catch (error) {
+      winston.error('Failed to retrieve items:', error);
+      res.status(500).json({ error: 'Failed to retrieve items.' });
+    }
+  });
