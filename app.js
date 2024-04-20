@@ -2,6 +2,8 @@ const express = require('express');
 const winston = require('winston');
 const taskRoutes = require('./routes/taskRoutes');
 const mongooseConfig = require('./config/mongoose');
+const taskController = require('./controllers/taskController');
+
 
 const port = 3000;
 
